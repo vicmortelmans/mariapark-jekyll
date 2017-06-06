@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll yippeeee!"
+title:  "Mariapark Brasschaat"
 date:   2017-06-06 00:05:24 +0200
 categories: jekyll update
 ---
