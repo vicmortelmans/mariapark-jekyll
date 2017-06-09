@@ -68,6 +68,7 @@ i {
   columns: 200px 3;
   -webkit-columns: 200px 3;
   -moz-columns: 200px 3;
+  padding: 60px 0;
   text-align: justify;
 }
 #fp-nav {
@@ -78,7 +79,7 @@ i {
 }
 button {
   position: relative;
-  margin: 30px auto;
+  margin: 3px auto;
   padding: 0;
   overflow: hidden;
   border-width: 0;
