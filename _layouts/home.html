@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles/jquery.fullPage.css" />
+    <link rel="stylesheet" type="text/css" href="styles/mariapark.css" />
+    <link href="https://fonts.googleapis.com/css?family=Alegreya:400i|Hammersmith+One" rel="stylesheet">
+    <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.fullPage.min.js"></script>
+  </head>
+  <body>
+    <div id="fullpage">
+      {% for statie in site.data.mariapark-data %}
+      <div class="section" id="id-{{ statie.titel1 | slugify }}" data-anchor="{{ statie.titel1 | slugify }}">
+        <div class="slide">
+          <div class="pane titel">
+            <div class="content">{{ statie.titel1 }}:<br/>{{ statie.titel2 }}</div>
+          </div>
+        </div><!--slide-->
+        <div class="slide">
+          <div class="pane citaat">
+            <div class="content">{{ '"' | append: statie.citaat | append: '"' | smartify }}</div>
+          </div>
+        </div><!--slide-->
+        <div class="slide">
+          <div class="pane evangelie">
+            <div class="content">
+              <p><i>{{ statie.bijbelref }}</i></p> 
+              <div class="text">
+                <p>{{ statie.bijbeltekst }}</p>
+              </div>
+              <button name="overweging" class="modal"><span>Overweging</span></button>
+              <button name="gebed" class="modal"><span>Gebed</span></button>
+            </div>
+          </div>
+        </div><!--slide-->
+        <div class="slide">
+          <div class="pane citaat">
+            <div class="content">{{ statie.uitspraak }}</div>
+          </div>
+        </div><!--slide-->
+        <div class="slide">
+          <div class="pane citaat">
+            <div class="content">{{ '"' | append: statie.citaat2 | append: '"' | smartify }}</div>
+          </div>
+        </div><!--slide-->
+      </div><!--section-->
+      {% endfor %}
+    </div>
+    {% for statie in site.data.mariapark-data %}
+    <div class="pane overweging {{ statie.titel1 | slugify }}">
+      <div class="content">
+        <h2>OVERWEGING</h2>
+        <div class="text">
+          <p>{{ statie.overweging | smartify }}</p>
+        </div>
+        <button class="close_modal"><span>Voortgaan</span></button>
+      </div>
+    </div><!-- overweging -->
+    <div class="pane gebed {{ statie.titel1 | slugify }}">
+      <div class="content">
+        <h2>GEBED</h2>
+        <div class="text">
+          <p>{{ statie.gebed }}</p>
+        </div>
+        <button class="close_modal"><span>Voortgaan</span></button>
+      </div>
+    </div><!-- gebed -->
+    {% endfor %}
+  </body>
+  <script>
+    $(document).ready(function() {
+      $('#fullpage').fullpage({
+        loopHorizontal: false,
+        navigation: true,
+        navigationPosition: 'left'
+      });
+      $('button.modal').on('click', function(){
+        $.fn.fullpage.setAllowScrolling(false);
+        $.fn.fullpage.setKeyboardScrolling(false);
+        var id = $(this).closest('.section').attr('id');
+        var name = $(this).attr('name');
+        var modal = $('.'+id+'.'+name);
+        modal.height('100%');
+        $('#fp-nav').hide();
+        window.open_modal = modal;
+      });
+      $('button.close_modal').on('click', function(){
+        $.fn.fullpage.setAllowScrolling(true);
+        $.fn.fullpage.setKeyboardScrolling(true);
+        window.open_modal.height('0');
+        $('#fp-nav').show();
+      });
+    });
+  </script>
+</html>

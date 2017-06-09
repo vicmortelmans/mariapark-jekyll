@@ -1,0 +1,2 @@
+#!/bin/sh
+curl -o _data/mariapark-data.csv https://docs.google.com/spreadsheets/d/1twe0PtPy5QKtyAimkkBv2kDyS3FIGM4xtxS9lMrvvqM/export?format=csv&id=1twe0PtPy5QKtyAimkkBv2kDyS3FIGM4xtxS9lMrvvqM&gid=0

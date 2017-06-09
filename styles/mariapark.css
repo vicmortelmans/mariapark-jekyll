@@ -1,0 +1,149 @@
+---
+---
+html {
+  font-family: 'Hammersmith One', sans-serif;
+  color: white;
+}
+p {
+  margin: 0;
+  margin-bottom: 12px;
+}
+i {
+  font-family: 'Alegreya', cursive; 
+  font-style: normal;
+}
+{% for statie in site.data.mariapark-data %}
+  #id-{{ statie.titel1 | slugify }} {
+    background-image: url('/images/{{ statie.titel1 | slugify }}-{{ statie.titel2 | slugify }}.jpg');
+    background-size: cover;
+    background-position: center {{ statie.background-position }}%;
+  }
+  #id-{{ statie.titel1 | slugify }} .pane {
+    background: {{ statie["dark-color"] }};  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, {{ statie.light-color }}, {{ statie.dark-color }});  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, {{ statie.light-color }}, {{ statie.dark-color }}); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+{% endfor %}
+.slide {
+  position: relative;
+}
+.titel,.citaat,.evangelie {
+  border-top: 5px solid white;
+  bottom: 0px;
+  left: 0px;
+  position: absolute;
+  width: 100%;
+  max-height: 100%;
+}
+.overweging,.gebed {
+  background: #455A64;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #607D8B, #455A64);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #607D8B, #455A64); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+  position:fixed;
+  height: 0;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  overflow: scroll;
+}
+.titel {
+  font-size: 16pt;
+}
+.citaat {
+  font-size: 16pt;
+  font-family: 'Alegreya', cursive; 
+}
+.evangelie {
+  font-size: 11pt;
+}
+.overweging {
+
+}
+.gebed {
+}
+.content {
+  padding: 60px;
+  max-width: 767px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.text {
+  columns: 200px 3;
+  -webkit-columns: 200px 3;
+  -moz-columns: 200px 3;
+  text-align: justify;
+}
+#fp-nav {
+  top: 10%;
+}
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+  background: white;
+}
+button {
+  position: relative;
+  margin: 30px auto;
+  padding: 0;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  background-color: #455A64;
+  color: white;
+  transition: background-color .3s;
+}
+button:hover, button:focus {
+  background-color: #607D8B;
+}
+button > * {
+  position: relative;
+}
+button span {
+  display: block;
+  padding: 12px 24px;
+}
+button:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0;
+  padding-top: 0;
+  border-radius: 100%;
+  background-color: rgba(236, 240, 241, .3);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+button:active:before {
+  width: 120%;
+  padding-top: 120%;
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+/* slide fade effect https://slicejack.com/fullpage-js-slide-fade-effect/ */
+.fp-slidesContainer {
+  width: 100%!important;
+  transform: none!important;
+}
+
+.fp-slide {
+  width: 100%!important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 0;
+  transition: all .7s ease-in-out;
+}
+
+.fp-slide.active {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+}
