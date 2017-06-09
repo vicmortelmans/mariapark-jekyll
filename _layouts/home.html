@@ -11,7 +11,7 @@
   <body>
     <div id="fullpage">
       {% for statie in site.data.mariapark-data %}
-      <div class="section" id="id-{{ statie.titel1 | slugify }}" name="{{ statie.titel1 | slugify }}" data-anchor="{{ statie.titel1 | slugify }}">
+      <div class="section" id="id-{{ statie.titel1 | slugify }}" data-name="{{ statie.titel1 | slugify }}" data-anchor="{{ statie.titel1 | slugify }}">
         <div class="slide">
           <div class="pane titel">
             <div class="content">{{ statie.titel1 }}:<br/>{{ statie.titel2 }}</div>
@@ -78,7 +78,7 @@
       $('button.modal').on('click', function(){
         $.fn.fullpage.setAllowScrolling(false);
         $.fn.fullpage.setKeyboardScrolling(false);
-        var id = $(this).closest('.section').attr('name');
+        var id = $(this).closest('.section').attr('data-name');
         var name = $(this).attr('name');
         var modal = $('.'+id+'.'+name);
         modal.height('100%');
