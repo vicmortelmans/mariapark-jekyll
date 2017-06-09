@@ -14,7 +14,7 @@ i {
 }
 {% for statie in site.data.mariapark-data %}
   #id-{{ statie.titel1 | slugify }} {
-    background-image: url('{{ site.baseurl }}/images/{{ statie.titel1 | slugify }}-{{ statie.titel2 | slugify }}.jpg');
+    background-image: url('{{ site.github.url }}/images/{{ statie.titel1 | slugify }}-{{ statie.titel2 | slugify }}.jpg');
     background-size: cover;
     background-position: center {{ statie.background-position }}%;
   }
