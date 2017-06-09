@@ -25,10 +25,7 @@
         <div class="slide">
           <div class="pane evangelie">
             <div class="content">
-              <p><i>{{ statie.bijbelref }}</i></p> 
-              <div class="text">
-                <p>{{ statie.bijbeltekst }}</p>
-              </div>
+              <button name="bijbelcitaat" class="modal"><span>Bijbel</span></button>
               <button name="overweging" class="modal"><span>Overweging</span></button>
               <button name="gebed" class="modal"><span>Gebed</span></button>
             </div>
@@ -48,6 +45,16 @@
       {% endfor %}
     </div>
     {% for statie in site.data.mariapark-data %}
+    <div class="pane bijbelcitaat {{ statie.titel1 | slugify }}">
+      <div class="content">
+        <h2>BIJBELCITAAT</h2> 
+        <p><i>{{ statie.bijbelref }}</i></p> 
+        <div class="text">
+          <p>{{ statie.bijbeltekst | smartify }}</p>
+        </div>
+        <button class="close_modal"><span>Voortgaan</span></button>
+      </div>
+    </div><!-- bijbelcitaat -->
     <div class="pane overweging {{ statie.titel1 | slugify }}">
       <div class="content">
         <h2>OVERWEGING</h2>
@@ -61,7 +68,7 @@
       <div class="content">
         <h2>GEBED</h2>
         <div class="text">
-          <p>{{ statie.gebed }}</p>
+          <p>{{ statie.gebed | smartify }}</p>
         </div>
         <button class="close_modal"><span>Voortgaan</span></button>
       </div>
