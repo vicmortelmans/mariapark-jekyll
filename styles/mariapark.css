@@ -71,12 +71,6 @@ i {
   padding: 60px 0;
   text-align: justify;
 }
-#fp-nav {
-  top: 10%;
-}
-#fp-nav ul li a span, .fp-slidesNav ul li a span {
-  background: white;
-}
 button {
   position: relative;
   margin: 3px auto;
